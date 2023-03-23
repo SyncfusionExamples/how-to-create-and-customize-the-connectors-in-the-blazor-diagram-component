@@ -1,0 +1,176 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+
+
+@*@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Add connector" OnClick="@AddConnector"></SfButton>
+<SfButton Content="Edit connector" OnClick="@EditConnector"></SfButton>
+<SfDiagramComponent @ref="@Diagram" Width="1000px" Height="500px" Nodes="@NodeCollection" Connectors="@connectors"></SfDiagramComponent>
+
+@code
+{
+    SfDiagramComponent Diagram;
+
+    //Defines diagram's connector collection.
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+            {
+                OffsetX = 385,
+                OffsetY = 185,
+                Height = 50,
+                Width = 150,
+                ID = "node1",
+                Shape = new BasicShape()
+                {
+                    Type = NodeShapes.Basic,
+                    Shape = NodeBasicShapes.Rectangle
+                },
+                Style = new ShapeStyle()
+                {
+                    Fill = "#37909A",
+                    StrokeColor = "#37909A",
+                },
+            };
+        NodeCollection.Add(node1);
+        Node node2 = new Node()
+            {
+                OffsetX = 385,
+                OffsetY = 325,
+                Height = 50,
+                Width = 150,
+                ID = "node2",
+                Shape = new BasicShape()
+                {
+                    Type = NodeShapes.Basic,
+                    Shape = NodeBasicShapes.Parallelogram
+
+                },
+                Style = new ShapeStyle()
+                {
+                    Fill = "#37909A",
+                    StrokeColor = "#37909A",
+                },
+            };
+        NodeCollection.Add(node2);
+        NodeCollection.Add(node1);
+        Node node3 = new Node()
+            {
+                OffsetX = 645,
+                OffsetY = 255,
+                Height = 50,
+                Width = 150,
+                ID = "node3",
+                Shape = new BasicShape()
+                {
+                    Type = NodeShapes.Basic,
+                    Shape = NodeBasicShapes.Ellipse
+
+                },
+                Style = new ShapeStyle()
+                {
+                    Fill = "#37909A",
+                    StrokeColor = "#37909A",
+                },
+            };
+        NodeCollection.Add(node3);
+        Connector Connector = new Connector()
+            {
+                ID = "connector1",
+                //SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+                //TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+                TargetID = "node2",
+                SourceID = "node1",
+                Style = new ShapeStyle() { Fill = "#6f409f", StrokeColor = "#6f409f", StrokeWidth = 2 },
+
+                 Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new OrthogonalSegment
+                {
+                    Type = ConnectorSegmentType.Orthogonal,
+                    Direction = Direction.Right
+                    Length = 100,
+                    
+                   
+                },
+                new OrthogonalSegment
+                {
+                    Type = ConnectorSegmentType.Orthogonal,
+                    Direction = Direction.Bottom,
+                    Length = 200,
+                }
+            },
+
+                //   TargetDecorator = new DecoratorSettings
+                //   {
+                //       Shape = DecoratorShape.Diamond
+                //   },
+                //   Annotations = new DiagramObjectCollection<PathAnnotation>
+                //   {
+                //       new PathAnnotation()
+                //       {
+                
+                //           Content = "New Annotation"
+                //       }
+                //   }
+            };
+
+        connectors.Add(Connector);
+    }
+
+    private void AddConnector()
+    {
+        Connector NewConnector = new Connector()
+            {
+                ID = "connector2",
+                SourceID = "node2",
+                TargetID = "node3",
+                Type = ConnectorSegmentType.Straight
+            };
+
+        connectors.Add(NewConnector);
+
+        //Diagram.InteractionController = DiagramInteractions.DrawOnce;
+
+        //Diagram.DrawingObject = new Connector()
+        //    {
+        //        Type = ConnectorSegmentType.Orthogonal
+
+
+        //    };
+    }
+
+    private void EditConnector()
+    {
+        Diagram.BeginUpdate();
+        Diagram.Connectors[0].Style = new ShapeStyle() { Fill = "#6f409f", StrokeColor = "#6f409f", StrokeWidth = 2 };
+        // Diagram.Connectors[0].Type = ConnectorSegmentType.Bezier;
+        Diagram.Connectors[1].Style = new ShapeStyle() { Fill = "#6f409f", StrokeColor = "#6f409f", StrokeWidth = 2 };
+        //Diagram.Connectors[1].Type = ConnectorSegmentType.Bezier;
+
+        Diagram.EndUpdate();
+        //Diagram.Connectors.Remove(connectors[0]);
+    }
+}*@
+
